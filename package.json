@@ -1,0 +1,8 @@
+{
+    "name": "myapp",
+    "description": "",
+    "version": "1.0.0",
+    "engines": {
+      "node": "16.13.1"
+    }
+  }

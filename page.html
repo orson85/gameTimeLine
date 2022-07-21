@@ -1,0 +1,101 @@
+<DOCTYPE html>
+
+  <html lang="de">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta tag="Games">
+    <meta tag="Timeline">
+    <title>Videogame-Timeline</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  
+  <body>
+
+    <script>
+      var data=[];
+      window.onload = data = localStorage.getItem("storage");
+      console.log(data);
+      data = JSON.parse(data);
+      console.log(data);
+
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const i = urlParams.get('id');
+
+      console.log(i);
+      
+
+    </script>     
+
+
+ 
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <br>
+        <h1 id=GameTitel></h1>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <img id=GameBild src="" height=250 width=250>
+      </div>
+      <div class="col-6">
+      <ul>
+        <li><p id=GameReleaseDate></p></li>
+        <li><p id=GamePlattform></p></li>
+        <li><p id=GameGenre></p></li>
+        <li><p id=GameSummary></p></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+          <footer>
+            <br>
+            <h6 id="LinksUeberschrift">Weitere interessante Links:</h6>    
+            <ul>
+              <li class="Links"><a class="Links" href="https://www.igdb.com/discover">IGDB</a></li>
+              <li class="Links"><a class="Links" href="https://dev.twitch.tv/docs/api/">Twitch API</a></li>
+              <li class="Links"><a class="Links" href="https://www.w3schools.com/">W3Schools</a></li>
+            </ul>
+            <br>
+          </footer>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    var name = data[i].name;
+    var coverUrl = data[i].cover.url.replace("/t_thumb/", "/t_screenshot_med/");
+    var release_dates = data[i].release_dates.y;
+    var platforms = data[i].platforms.name;
+    var genre = data[i].genres.name;
+    var summary = data[i].summary;
+    document.getElementById("GameTitel").innerHTML =name;
+    document.getElementById("GameBild").src = coverUrl;
+    document.getElementById("GameReleaseDate").innerHTML = data[0].release_dates[0].y;
+    document.getElementById("GamePlattform").innerHTML = data[0].platforms[0].name;
+    document.getElementById("GameGenre").innerHTML = data[0].genres[0].name;
+    document.getElementById("GameSummary").innerHTML = data[0].summary;
+</script>
+
+  </body>
+  
+  </html>

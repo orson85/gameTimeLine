@@ -1,0 +1,138 @@
+<DOCTYPE html>
+
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta tag="Games">
+  <meta tag="Timeline">
+  <title>Videogame-Timeline</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="#">
+  <link href="http://fonts.cdnfonts.com/css/games" rel="stylesheet">
+  <style>
+    @import url('http://fonts.cdnfonts.com/css/games');
+  </style>
+  <script type="text/javascript" src="script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-10 offset-1">
+        <h1 id=TitelUeberschrift data-text="VideogameTimeline">VideogameTimeline</h1>
+        <br>
+        <h4 id="TitelZusatz">Ein systematischer Ueberblick Ueber die Geschichte von Videogames</h4>
+        <br>
+        <p>Diese Seite ist ein Projekt der beiden IW-Studierenden Urs und Jannik und 
+        entstand im Rahmen des Moduls "WEBP - Webprogrammierung." Zweck dieser Seite ist die Darstellung eines
+        Zeitstrahls, welcher einen Überblick über verschiedene Videogames, in zeitlicher Abfolge, abbildet.
+        Der Zeitstrahl verfügt über eine interaktive Komponente, so kann die gewünschte Zeitspanne mittels Schieberegler 
+        ausgewählt werden. Mit einem Klick auf eines der Games werden zudem vertiefte Infos zum jeweiligen Game angezeigt.</p>
+
+        <p>Viel Spass beim Eintauchen in die Welt der Videogames!!!</p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+<!-- JAHRES-SLIDER -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-10 offset-1">
+      <input type='hidden' id= 'idVon' name='id' value='' /> <!--unsichtbares Element in welche der "Von"-Wert des Sliders als value eingefügt wird-->
+      <input type='hidden' id= 'idBis' name='id' value='' /> <!--unsichtbares Element in welche der "Bis"-Wert des Sliders als value eingefügt wird-->
+
+      <script>
+    
+      $( function() {
+      $( "#slider-range" ).slider({
+        range: true,
+        min: 1970,
+        max: 2021,
+        values: [ 1995, 2005 ],
+        slide: function( event, ui ) {
+          $( "#year" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+    
+        
+          document.getElementById('idVon').value = ui.values[0];
+          document.getElementById('idBis').value = ui.values[1];
+        }
+    
+      });
+        $( "#year" ).val( $( "#slider-range" ).slider( "values", 0 ) +
+        " - " + $( "#slider-range" ).slider( "values", 1 ) );
+      
+      }
+      );
+  
+      </script>
+ 
+    <p>
+      <label for="year">Jahresspanne:</label>
+      <input type="text" id="year" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    </p>
+
+    <div id="slider-range"><p></p></div>
+    <br>
+    <button onclick="abfrage()" class="btn btn-primary" type="submit">Ok</button>
+    <!--ENDE: JAHRES-SLIDER-->
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+      <div class="row row-cols-md-4" id="gallerie"></div>
+      <div id="pages"></div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <p id="id"></p>
+          <p id="game"></p>
+          <p id="y"></p>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+          <footer>
+            <br>
+            <h6 id="LinksUeberschrift">Weitere interessante Links:</h6>    
+            <ul>
+              <li class="Links"><a class="Links" href="https://www.igdb.com/discover">IGDB</a></li>
+              <li class="Links"><a class="Links" href="https://dev.twitch.tv/docs/api/">Twitch API</a></li>
+              <li class="Links"><a class="Links" href="https://www.w3schools.com/">W3Schools</a></li>
+            </ul>
+            <br>
+          </footer>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
